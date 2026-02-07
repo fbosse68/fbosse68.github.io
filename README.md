@@ -1,2 +1,2 @@
 # website
-Erste eigene Weppräsenz
+Erste eigene Webpräsenz
