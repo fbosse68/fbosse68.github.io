@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt – Dr. Florian Bosse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --petrol: #34585B;
+            --petrol-dark: #254449;
+            --petrol-light: #486E72;
+            --sage: #8FA88E;
+            --cream: #FAFAF8;
+            --warm-white: #F5F3F0;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(52, 88, 91, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--petrol);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--petrol);
+        }
+
+        /* Main Container */
+        .contact-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        /* Contact Info Section */
+        .contact-info-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(52, 88, 91, 0.08);
+            height: fit-content;
+        }
+
+        .contact-info-section h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            color: var(--petrol);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .contact-info-section p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(52, 88, 91, 0.1);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-item h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--petrol);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .info-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-item a:hover {
+            color: var(--petrol);
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(52, 88, 91, 0.08);
+        }
+
+        .form-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--petrol);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .form-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        label .required {
+            color: var(--petrol);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1.5px solid #E1E8E8;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            background: var(--cream);
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--petrol);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 88, 91, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            background: var(--petrol);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            background: var(--petrol-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 88, 91, 0.3);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #D4EDDA;
+            color: #155724;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #28A745;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--petrol-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .contact-info-section h1 {
+                font-size: 2rem;
+            }
+
+            .form-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .contact-info-section,
+            .form-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">DR. FLORIAN BOSSE</a>
+            <ul>
+                <li><a href="index.html#home">Willkommen</a></li>
+                <li><a href="index.html#ueber-mich">Über mich</a></li>
+                <li><a href="index.html#ansatz">Mein Ansatz</a></li>
+                <li><a href="index.html#angebote">Angebote</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="contact-container">
+        <!-- Contact Info -->
+        <div class="contact-info-section">
+            <h1>Kontakt</h1>
+            <p>Ich freue mich über Ihre Nachricht. Ob Frage, Terminwunsch oder einfach Interesse an meinem Ansatz – schreiben Sie mir gerne.</p>
+            
+            <div class="info-item">
+                <h3>E-Mail</h3>
+                <a href="mailto:Dr.FlorianBosse@posteo.de">Dr.FlorianBosse@posteo.de</a>
+            </div>
+            
+            <div class="info-item">
+                <h3>Praxis</h3>
+                <p>
+                    [Ihre Praxisadresse]<br>
+                    [PLZ Ort]
+                </p>
+            </div>
+            
+            <div class="info-item">
+                <h3>Erreichbarkeit</h3>
+                <p>
+                    Ich antworte in der Regel innerhalb von 24-48 Stunden.<br>
+                    Für dringende Anliegen rufen Sie bitte an.
+                </p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="form-section">
+            <h2>Nachricht senden</h2>
+            <p class="form-description">Nutzen Sie dieses Formular für Ihre Anfrage. Alle Felder mit * sind Pflichtfelder.</p>
+            
+            <div class="success-message" id="successMessage">
+                ✓ Vielen Dank! Ihre Nachricht wurde erfolgreich versendet. Ich melde mich in Kürze bei Ihnen.
+            </div>
+
+            <form action="https://formspree.io/f/meelqrkl" method="POST" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Ihr vollständiger Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="ihre.email@beispiel.de">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Betreff</label>
+                    <input type="text" id="subject" name="subject" placeholder="Worum geht es?">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Nachricht <span class="required">*</span></label>
+                    <textarea id="message" name="message" required placeholder="Ihre Nachricht an mich..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Nachricht senden</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Dr. Florian Bosse</h3>
+                <p>Schmerztherapie, Begleitung und Coaching auf Basis neuroplastischer Selbstorganisation</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Startseite</a>
+                <a href="mbsr-kurs.html">MBSR-Kurs</a>
+                <a href="kontakt.html">Kontakt</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Rechtliches</h3>
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dr. Florian Bosse. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            // Formspree handles the actual submission
+            // We just show a success message after submission
+            setTimeout(function() {
+                successMessage.style.display = 'block';
+                form.reset();
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Hide message after 10 seconds
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 10000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
