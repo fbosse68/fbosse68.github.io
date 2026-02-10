@@ -4,9 +4,9 @@
   
   <!-- Left: Three Concentric Circles (Top View) -->
   <g transform="translate(133, 150)">
-    <circle cx="0" cy="0" r="80" fill="none" stroke="#000000" stroke-width="3"/>
-    <circle cx="0" cy="0" r="55" fill="none" stroke="#000000" stroke-width="3"/>
-    <circle cx="0" cy="0" r="30" fill="none" stroke="#000000" stroke-width="3"/>
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#000000" stroke-width="8"/>
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#000000" stroke-width="8"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#000000" stroke-width="8"/>
   </g>
   
   <!-- Center: Three Ellipses (Perspective View - higher angle, wider) -->
