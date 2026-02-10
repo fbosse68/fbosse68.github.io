@@ -12,7 +12,7 @@
   <!-- Center: Three Ellipses (Perspective View - higher angle, wider) -->
   <g transform="translate(400, 150)">
     <ellipse cx="0" cy="-60" rx="80" ry="28" fill="none" stroke="#000000" stroke-width="5"/>
-    <ellipse cx="0" cy="0" rx="55" ry="18" fill="none" stroke="#000000" stroke-width="5"/>
+    <ellipse cx="0" cy="10" rx="55" ry="18" fill="none" stroke="#000000" stroke-width="5"/>
     <ellipse cx="0" cy="60" rx="30" ry="11" fill="none" stroke="#000000" stroke-width="5"/>
   </g>
   
