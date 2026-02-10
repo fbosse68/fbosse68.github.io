@@ -5,34 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt – Dr. Florian Bosse</title>
     <link rel="stylesheet" href="fonts.css">
-
+    <link rel="stylesheet" href="styles.css">
     
     <style>
-        :root {
-            --petrol: #34585B;
-            --petrol-dark: #254449;
-            --petrol-light: #486E72;
-            --sage: #8FA88E;
-            --cream: #FAFAF8;
-            --warm-white: #F5F3F0;
-            --text-primary: #2D3436;
-            --text-secondary: #636E72;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--cream);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
+        /* ===== KONTAKT-SPEZIFISCHE STYLES ===== */
+        
+        /* Navigation (kontakt-spezifisch mit nav ul!) */
         nav {
             background: rgba(250, 250, 248, 0.95);
             backdrop-filter: blur(10px);
@@ -40,33 +18,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--petrol);
-            text-decoration: none;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-image {
-            height: 40px;
-            width: auto;
-            display: block;
         }
 
         nav ul {
@@ -298,6 +249,43 @@
 
         /* Responsive */
         @media (max-width: 968px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .contact-info-section h1 {
+                font-size: 2rem;
+            }
+
+            .form-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .contact-info-section,
+            .form-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
