@@ -1,105 +1,63 @@
-// Central Navigation JavaScript for Dr. Florian Bosse Website
-// Handles: Burger menu, mobile overlay, smooth scrolling, scroll-based nav hiding
-
-(function() {
-    'use strict';
-
-    // ============================================
-    // MOBILE MENU TOGGLE
-    // ============================================
-    
+// Burger Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
     const burgerMenu = document.getElementById('burgerMenu');
     const navLinks = document.getElementById('navLinks');
     const mobileOverlay = document.getElementById('mobileOverlay');
-    const navLinksItems = document.querySelectorAll('.nav-links a');
-
-    function toggleMenu() {
-        burgerMenu.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        mobileOverlay.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    const nav = document.querySelector('nav');
+    
+    // Toggle menu on burger click
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', function() {
+            burgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
     }
-
-    // Only add event listeners if elements exist (for pages with simplified nav)
-    if (burgerMenu && navLinks && mobileOverlay) {
-        burgerMenu.addEventListener('click', toggleMenu);
-        mobileOverlay.addEventListener('click', toggleMenu);
-        
-        // Close menu when clicking a link
+    
+    // Close menu on overlay click
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', function() {
+            burgerMenu.classList.remove('active');
+            navLinks.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Close menu when clicking a link
+    const navLinksItems = navLinks?.querySelectorAll('a');
+    if (navLinksItems) {
         navLinksItems.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    toggleMenu();
-                }
+            link.addEventListener('click', function() {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
     }
-
-    // ============================================
-    // SMOOTH SCROLLING FOR ANCHOR LINKS
-    // ============================================
     
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            
-            // Skip if it's just "#"
-            if (href === '#') return;
-            
-            e.preventDefault();
-            const target = document.querySelector(href);
-            
-            if (target) {
-                const nav = document.querySelector('nav');
-                const navHeight = nav ? nav.offsetHeight : 0;
-                const targetPosition = target.offsetTop - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // ============================================
-    // ELEGANT SCROLL-BASED NAVIGATION HIDING
-    // ============================================
+    // Hide nav on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    let scrollThreshold = 100;
     
-    const nav = document.querySelector('nav');
-    
-    if (nav) {
-        let scrollTimeout;
-        let lastScrollTop = 0;
-        let isScrolling = false;
-
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Only apply scroll behavior if scrolled down more than 50px
-            if (scrollTop <= 50) {
-                nav.classList.remove('hide-on-scroll');
-                isScrolling = false;
-                return;
-            }
-            
-            // Hide nav immediately when scrolling starts
-            if (!isScrolling) {
-                isScrolling = true;
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > scrollThreshold) {
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
                 nav.classList.add('hide-on-scroll');
-            }
-
-            // Clear previous timeout
-            clearTimeout(scrollTimeout);
-
-            // Show nav 1 second after scrolling stops
-            scrollTimeout = setTimeout(function() {
-                isScrolling = false;
+            } else {
+                // Scrolling up
                 nav.classList.remove('hide-on-scroll');
-            }, 1000);
-
-            lastScrollTop = scrollTop;
-        }, { passive: true });
-    }
-
-})();
+            }
+        } else {
+            // At top of page
+            nav.classList.remove('hide-on-scroll');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+});
