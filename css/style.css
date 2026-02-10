@@ -1,1 +1,71 @@
+/* ======================
+   Crimson Pro
+   ====================== */
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('../fonts/CrimsonPro-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('../fonts/CrimsonPro-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Crimson Pro';
+  src: url('../fonts/CrimsonPro-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ======================
+   DM Sans
+   ====================== */
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../fonts/DMSans-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../fonts/DMSans-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../fonts/DMSans-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ======================
+   Verwendung
+   ====================== */
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 300;
+}
 
