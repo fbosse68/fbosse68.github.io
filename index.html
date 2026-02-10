@@ -4,55 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Florian Bosse</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styles.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            /* Palette 2: #34585B - Erdiges Grüngrau */
-            --petrol: #34585B;
-            --petrol-dark: #254449;
-            --petrol-light: #486E72;
-            --petrol-lighter: #648A8E;
-            --cream: #E8DDD3;
-            --cream-light: #F5F1ED;
-            --beige: #D4C9BF;
-            --off-white: #FAFAF8;
-            --text-primary: #172E31;
-            --text-secondary: #34585B;
-            --text-light: #648A8E;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--off-white);
-            overflow-x: hidden;
-            font-weight: 400;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Crimson Pro', serif;
-            font-weight: 400;
-            color: var(--petrol);
-            letter-spacing: -0.01em;
-        }
-
-        /* Navigation */
+        /* ===== INDEX-SPEZIFISCHE STYLES ===== */
+        
+        /* Navigation Extensions für index */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(250, 250, 248, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
             border-bottom: 1px solid rgba(91, 123, 143, 0.08);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -70,33 +29,6 @@
                 transform: translateY(0);
                 opacity: 1;
             }
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--petrol);
-            text-decoration: none;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-image {
-            height: 40px;
-            width: auto;
-            display: block;
         }
 
         .nav-links {
@@ -131,6 +63,55 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger-menu span {
+            width: 28px;
+            height: 3px;
+            background: var(--petrol);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(23, 46, 49, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Hero Section */
@@ -179,8 +160,8 @@
             line-height: 1.15;
             margin-bottom: 2rem;
             color: var(--text-primary);
-            font-weight: 400;
-            white-space: nowrap;  /* ← NEU: Verhindert Umbruch */
+            font-weight: 300;
+            white-space: nowrap;
         }
 
         .hero p {
@@ -231,120 +212,57 @@
             align-items: center;
         }
 
-       .about-image {
-    width: 400px;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
-    box-shadow: 0 20px 60px rgba(91, 123, 143, 0.15);
-}
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(52, 88, 91, 0.15);
+        }
 
-.about-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-        .about-text {
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .about-text p {
-            margin-bottom: 1.8rem;
-            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 300;
             line-height: 1.9;
-            color: var(--text-secondary);
         }
 
-        .about-text p:first-child {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-
-        .disclaimer {
-            margin-top: 2.5rem;
-            padding: 1.5rem;
-            background: var(--cream-light);
-            border-left: 3px solid var(--petrol);
-            border-radius: 4px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Approach Section */
-        #ansatz {
-            background: var(--cream-light);
-        }
-
+        /* Approach Grid */
         .approach-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .approach-card {
-            background: var(--off-white);
-            padding: 2.5rem;
-            border-radius: 4px;
-            border: 1px solid rgba(91, 123, 143, 0.1);
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out both;
-            cursor: pointer;
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(52, 88, 91, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             color: inherit;
             display: block;
-            position: relative;
+            border: 1px solid rgba(52, 88, 91, 0.08);
         }
-
-        .approach-card:nth-child(1) { animation-delay: 0.1s; }
-        .approach-card:nth-child(2) { animation-delay: 0.2s; }
-        .approach-card:nth-child(3) { animation-delay: 0.3s; }
 
         .approach-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(52, 88, 91, 0.2);
-            background: white;
+            box-shadow: 0 12px 40px rgba(52, 88, 91, 0.15);
             border-color: var(--petrol-light);
         }
 
-        .approach-card:hover .card-link-text {
-            color: var(--petrol);
-            transform: translateX(5px);
-        }
-
-        .card-link-text {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--petrol-light);
-            transition: all 0.3s ease;
-        }
-
-        .card-link-text::after {
-            content: '→';
-            font-size: 1.1rem;
-        }
-
         .approach-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--petrol);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            font-size: 1.3rem;
         }
 
         .approach-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
             font-weight: 400;
@@ -352,88 +270,53 @@
 
         .approach-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
             line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
         }
 
-        /* Principles Section */
-        .principles {
-            margin-top: 5rem;
-            padding: 3rem;
-            background: var(--off-white);
-            border-radius: 4px;
-            border-left: 3px solid var(--petrol);
-        }
-
-        .principles h3 {
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-            font-weight: 400;
-        }
-
-        .principles ul {
-            list-style: none;
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .principles li {
-            padding-left: 1.8rem;
-            position: relative;
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .principles li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
+        .card-link-text {
             color: var(--petrol);
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .principles li strong {
-            color: var(--text-primary);
             font-weight: 500;
+            font-size: 0.9rem;
+            transition: gap 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Services Section */
+        .card-link-text::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .approach-card:hover .card-link-text::after {
+            transform: translateX(4px);
+        }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .service-card {
-            background: var(--cream-light);
+            background: white;
             padding: 3rem 2.5rem;
-            border-radius: 4px;
-            border: 1px solid rgba(91, 123, 143, 0.08);
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out both;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(52, 88, 91, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(52, 88, 91, 0.08);
         }
-
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(52, 88, 91, 0.15);
-            background: white;
-            border-color: var(--petrol-light);
-        }
-
-        a.service-card {
-            cursor: pointer;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(52, 88, 91, 0.12);
         }
 
         .service-card h3 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
             font-weight: 400;
@@ -441,208 +324,127 @@
 
         .service-card p {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
             line-height: 1.8;
-            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
 
         .service-features {
             list-style: none;
-            margin-top: 1.5rem;
+            padding: 0;
         }
 
         .service-features li {
-            padding: 0.4rem 0;
+            padding: 0.75rem 0;
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            padding-left: 1.5rem;
-            position: relative;
+            border-bottom: 1px solid rgba(52, 88, 91, 0.1);
+            font-weight: 300;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
         }
 
         .service-features li::before {
-            content: '·';
-            position: absolute;
-            left: 0;
+            content: '✓';
             color: var(--petrol);
-            font-size: 1.5rem;
-            line-height: 1;
+            margin-right: 0.75rem;
+            font-weight: 600;
         }
 
         /* Contact Section */
         #kontakt {
-            background: var(--petrol);
-            border-radius: 4px;
-            padding: 5rem 3rem;
             text-align: center;
+            padding: 6rem 2rem;
         }
 
         #kontakt h2 {
-            font-size: 2.2rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 1.5rem;
-            color: white;
+            color: var(--text-primary);
             font-weight: 400;
         }
 
         #kontakt p {
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 3rem;
             font-weight: 300;
+            line-height: 1.8;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1.1rem 2.8rem;
-            background: white;
-            color: var(--petrol-dark);
+            background: var(--petrol);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 3px;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.05rem;
             transition: all 0.3s ease;
-            letter-spacing: 0.02em;
+            box-shadow: 0 4px 15px rgba(52, 88, 91, 0.2);
         }
 
         .cta-button:hover {
+            background: var(--petrol-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            background: var(--cream-light);
+            box-shadow: 0 6px 25px rgba(52, 88, 91, 0.3);
         }
 
         .contact-info {
-            margin-top: 3.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 900px;
+            margin: 5rem auto 0;
+            text-align: left;
         }
 
         .contact-item {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 0.5rem;
         }
 
         .contact-item strong {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 500;
-        }
-
-        .contact-item span {
-            color: white;
-            font-size: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-primary);
-            color: rgba(255, 255, 255, 0.6);
-            padding: 2.5rem 2rem;
-            text-align: center;
-        }
-
-        footer p {
+            color: var(--petrol);
+            font-weight: 600;
             font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-item span,
+        .contact-item a {
+            color: var(--text-secondary);
             font-weight: 300;
+            text-decoration: none;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .approach-grid,
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+        .contact-item a:hover {
+            color: var(--petrol);
         }
 
-        /* Mobile Menu Burger Button */
-        .burger-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-            flex-shrink: 0; /* Prevent shrinking on small screens */
-        }
-
-        .burger-menu span {
-            width: 25px;
-            height: 2px;
-            background: var(--petrol);
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .burger-menu.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .burger-menu.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .burger-menu.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -5px);
-        }
-
-        /* Mobile Navigation Overlay */
-        .mobile-nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-nav-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
+        /* Responsive Design */
+        @media (max-width: 968px) {
             .burger-menu {
                 display: flex;
-            }
-
-            .logo-image {
-                height: 36px;
             }
 
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: -300px;
+                width: 300px;
                 height: 100vh;
-                width: 280px;
                 background: var(--off-white);
                 flex-direction: column;
-                padding: 5rem 2rem 2rem;
-                gap: 2rem;
-                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-                transition: right 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 8rem 2rem 2rem;
+                gap: 0;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 1000;
             }
 
@@ -656,13 +458,13 @@
             }
 
             .nav-links.active li {
-                animation: slideInMenuItem 0.4s ease forwards;
+                animation: slideInMenuItem 0.4s ease-out forwards;
             }
 
-            .nav-links.active li:nth-child(1) { animation-delay: 0.1s; }
-            .nav-links.active li:nth-child(2) { animation-delay: 0.15s; }
-            .nav-links.active li:nth-child(3) { animation-delay: 0.2s; }
-            .nav-links.active li:nth-child(4) { animation-delay: 0.25s; }
+            .nav-links.active li:nth-child(1) { animation-delay: 0s; }
+            .nav-links.active li:nth-child(2) { animation-delay: 0.1s; }
+            .nav-links.active li:nth-child(3) { animation-delay: 0.15s; }
+            .nav-links.active li:nth-child(4) { animation-delay: 0.2s; }
             .nav-links.active li:nth-child(5) { animation-delay: 0.3s; }
 
             @keyframes slideInMenuItem {
@@ -696,7 +498,28 @@
             }
         }
 
-        /* Extra small screens */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .approach-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 400px) {
             .nav-container {
                 padding: 1.5rem 1rem;
@@ -708,10 +531,6 @@
                 gap: 0.5rem;
             }
 
-            .logo-image {
-                height: 32px;
-            }
-
             .nav-links {
                 width: 260px;
             }
@@ -720,9 +539,6 @@
                 font-size: 1.75rem;
             }
         }
-
-        /* Scroll animations */
-        /* Animations removed for immediate visibility */
     </style>
 </head>
 <body>
@@ -872,7 +688,7 @@
         <div class="contact-info">
             <div class="contact-item">
                 <strong>E-Mail</strong>
-                <span><a href="mailto:Dr.FlorianBosse@posteo.de">Dr.FlorianBosse@posteo.de</a></span>
+                <span><a href="/cdn-cgi/l/email-protection#efab9dc1a983809d868e81ad809c9c8aaf9f809c9b8a80c18b8a"><span class="__cf_email__" data-cfemail="5014227e163c3f2239313e123f23233510203f2324353f7e3435">[email&#160;protected]</span></a></span>
             </div>
             <div class="contact-item">
                 <strong>YouTube</strong>
@@ -893,12 +709,6 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Dr. Florian Bosse · Begleitung & Achtsamkeit · <a href="impressum.html" style="color: var(--cream); text-decoration: underline;">Impressum</a> · <a href="datenschutz.html" style="color: var(--cream); text-decoration: underline;">Datenschutz</a></p>
-    </footer>
-
-    <!-- Central Navigation JavaScript -->
-    <script src="header.js"></script>
-
+        <p>&copy; 2026 Dr. Florian Bosse · Begleitung & Achtsamkeit · <a href="impressum.html" style="color: var(--cream); text-decoration: underline;">Impressum</a> · <a href="datenschutz.html" style="color: var(--cream); text-decoration:
 </body>
 </html>
-
