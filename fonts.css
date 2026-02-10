@@ -76,16 +76,3 @@
     src: url('fonts/dm-sans-v14-latin-600.woff2') format('woff2'),
          url('fonts/dm-sans-v14-latin-600.woff') format('woff');
 }
-
-/* ===================================================
-   HINWEISE:
-   
-   - font-display: swap → Text wird sofort mit Fallback
-     angezeigt, dann ersetzt wenn Font geladen
-   
-   - woff2 ist modern & komprimiert (beste Option)
-   - woff ist Fallback für ältere Browser
-   
-   - Dateinamen entsprechen google-webfonts-helper
-     Standard-Benennung
-   =================================================== */
