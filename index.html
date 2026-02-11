@@ -474,6 +474,17 @@
             .nav-links li {
                 opacity: 0;
                 transform: translateX(30px);
+                border-top: 1px solid rgba(52, 88, 91, 0.08);
+                padding: 1.8rem 0;
+            }
+            
+            .nav-links li:first-child {
+                border-top: none;
+                padding-top: 0;
+            }
+            
+            .nav-links li:last-child {
+                padding-bottom: 0;
             }
 
             .nav-links.active li {
@@ -495,8 +506,7 @@
 
             .nav-links a {
                 font-size: 1.1rem;
-                padding: 1.2rem 0;
-                border-bottom: 1px solid rgba(52, 88, 91, 0.1);
+                display: block;
             }
 
             section {
