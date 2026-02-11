@@ -1,0 +1,11 @@
+# robots.txt für fbosse68.github.io
+# Sagt Suchmaschinen, was sie crawlen dürfen
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://fbosse68.github.io/sitemap.xml
+
+# Optionale Verzögerung (höflich zu Servern)
+Crawl-delay: 1
