@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://fbosse68.github.io/sitemap.xml
+Sitemap: https://drbosse.de/sitemap.xml
 
 # Optionale Verzögerung (höflich zu Servern)
 Crawl-delay: 1
