@@ -18,7 +18,7 @@
     <style>
         /* ===== KONTAKT-SPEZIFISCHE STYLES ===== */
         
-        /* Navigation */
+        /* Navigation (kontakt-spezifisch mit nav ul!) */
         nav {
             background: rgba(250, 250, 248, 0.95);
             backdrop-filter: blur(10px);
@@ -28,11 +28,22 @@
             z-index: 1000;
         }
 
-        
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
 
-        
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
 
-        
+        nav a:hover {
+            color: var(--petrol);
+        }
 
         /* Main Container */
         .contact-container {
@@ -251,7 +262,9 @@
                 gap: 2rem;
             }
 
-            
+            nav ul {
+                gap: 1.5rem;
+            }
 
             .contact-info-section h1 {
                 font-size: 2rem;
@@ -263,7 +276,16 @@
         }
 
         @media (max-width: 768px) {
-            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
 
             .contact-info-section,
             .form-section {
@@ -389,10 +411,13 @@
             }
         }
     
-        @media (max-width: 968px) {
-            .contact-container {
+.contact-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
             }
 
             .contact-info-section h1 {
@@ -409,7 +434,16 @@
                 height: 36px;
             }
 
-            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
 
             .contact-info-section,
             .form-section {
@@ -457,7 +491,7 @@
             
             <div class="info-item">
                 <h3>E-Mail</h3>
-                 <a href="/cdn-cgi/l/email-protection#17736539717b78657e7679757864647257677864637278397372" target="_blank"><span class="__cf_email__" data-cfemail="0460762a62686b766d656a666b77776144746b7770616b2a6061">[email&#160;protected]</span></a> 
+                 <a href="/cdn-cgi/l/email-protection#f89c8ad69e94978a9199969a978b8b9db888978b8c9d97d69c9d" target="_blank"><span class="__cf_email__" data-cfemail="0561772b63696a776c646b676a76766045756a7671606a2b6160">[email&#160;protected]</span></a> 
             </div>
             
            
@@ -471,40 +505,6 @@
                    
                 </p>
             </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="form-section">
-            <h2>Nachricht senden</h2>
-            <p class="form-description">Nutzen Sie dieses Formular für Ihre Anfrage. Alle Felder mit * sind Pflichtfelder.</p>
-            
-            <div class="success-message" id="successMessage">
-                ✓ Vielen Dank! Ihre Nachricht wurde erfolgreich versendet. Ich melde mich in Kürze bei Ihnen.
-            </div>
-
-            <form action="https://formspree.io/f/meelqrkl" method="POST" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" required placeholder="Ihr vollständiger Name">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">E-Mail <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required placeholder="ihre.email@beispiel.de">
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Betreff</label>
-                    <input type="text" id="subject" name="subject" placeholder="Worum geht es?">
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Nachricht <span class="required">*</span></label>
-                    <textarea id="message" name="message" required placeholder="Ihre Nachricht an mich..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-button">Nachricht senden</button>
-            </form>
         </div>
     </div>
 
@@ -535,15 +535,26 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Form submission handling
-        const form = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
+    <script>
+    // Form submission handling
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
 
+    if (form) {
         form.addEventListener('submit', function(e) {
             // Formspree handles the actual submission
-            // We just show a success message after submission
-            setT
+            // Show success message after submission
+            setTimeout(function() {
+                successMessage.style.display = 'block';
+                form.reset();
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        });
+    }
+    </script>
+
     <script>
     // Burger Menu Toggle
     const burgerMenu = document.getElementById('burgerMenu');
@@ -571,4 +582,14 @@
         // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList
+                navLinks.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                if (mobileOverlay) {
+                    mobileOverlay.classList.remove('active');
+                }
+            });
+        });
+    }
+    </script>
+</body>
+</html>
