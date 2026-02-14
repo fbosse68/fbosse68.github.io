@@ -66,6 +66,124 @@
         strong {
             color: var(--petrol-dark);
         }
+    
+        /* === BURGER MENU & MOBILE NAVIGATION === */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger-menu span {
+            width: 24px;
+            height: 2px;
+            background: var(--petrol);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--petrol);
+        }
+
+        /* Mobile Navigation Overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Responsive Burger Menu */
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 260px;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 0;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                border-top: 1px solid rgba(52, 88, 91, 0.08);
+                padding: 1.8rem 0;
+            }
+            
+            .nav-links li:first-child {
+                border-top: none;
+                padding-top: 0;
+            }
+            
+            .nav-links li:last-child {
+                padding-bottom: 0;
+            }
+            
+            .nav-links a {
+                display: block;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
                 height: 32px;
@@ -79,9 +197,24 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo"><img src="logo.svg" alt="Logo" class="logo-image">Dr. Florian Bosse</a>
-            <a href="index.html" class="back-link">Zurück</a>
+            
+            <!-- Burger Menu Button -->
+            <div class="burger-menu" id="burgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#ansatz">Mein Ansatz</a></li>
+                <li><a href="mbsr-kurs.html">MBSR-Kurs</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileOverlay"></div>
 
     <div class="container">
         <h1>Datenschutzerklärung</h1>
@@ -143,7 +276,7 @@
             <strong>Dr. med. Florian Bosse</strong><br>
             Kirchtal 41<br>
             37136 Ebergötzen<br><br>
-            E-Mail: <a href=mailto:"dr.florianbosse@posteo.de" target="_blank">dr.florianbosse@posteo.de</a>
+            E-Mail: <a href="/cdn-cgi/l/email-protection#92b0f6e0bcf4fefde0fbf3fcf0fde1e1f7d2e2fde1e6f7fdbcf6f7b0" target="_blank"><span class="__cf_email__" data-cfemail="e68294c8808a89948f87888489959583a6968995928389c88283">[email&#160;protected]</span></a>
         </p>
 
         <p>
@@ -227,7 +360,5 @@
         <h2>7. Änderungen dieser Datenschutzerklärung</h2>
         
         <p>
-            Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der Einführung neuer Services. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.
-        </p>
-
-        <p style="margin-top:
+            Wir behalten uns vor, diese Datenschutzerklärung gelegentlich anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B</body>
+</html>
