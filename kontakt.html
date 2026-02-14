@@ -373,20 +373,6 @@
             }
         }
     
-.contact-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .contact-info-section h1 {
-                font-size: 2rem;
-            }
-
-            .form-section h2 {
-                font-size: 1.5rem;
-            }
-        }
-
         @media (max-width: 768px) {
             .logo-image {
                 height: 36px;
@@ -530,3 +516,13 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                if (mobileOverlay) {
+                    mobileOverlay.classList.remove('active');
+                }
+            });
+        });
+    }
+    </script>
+</body>
+</html>
