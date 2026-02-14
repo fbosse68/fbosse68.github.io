@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Animation - KONZENTRISCH!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #FAFAF8;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .instructions {
+            margin-top: 2rem;
+            color: #34585B;
+        }
+        
+        /* SVG Animation Styles */
+        .animated-logo {
+            cursor: pointer;
+        }
+        
+        /* Left circles fade in */
+        .circle-left-large,
+        .circle-left-medium,
+        .circle-left-small {
+            opacity: 0;
+            animation: fadeInCircles 8s ease-in-out forwards;
+        }
+        
+        /* Individual animations - ALL start at cy=0 (concentric!) */
+        .circle-rotating-large {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: rotateSequenceLarge 8s ease-in-out forwards;
+        }
+        
+        .circle-rotating-medium {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: rotateSequenceMedium 8s ease-in-out forwards;
+        }
+        
+        .circle-rotating-small {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: rotateSequenceSmall 8s ease-in-out forwards;
+        }
+        
+        /* DUPLICATED ellipses that STAY in center */
+        .ellipse-center-large {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: stayInCenterLarge 8s ease-in-out forwards;
+        }
+        
+        .ellipse-center-medium {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: stayInCenterMedium 8s ease-in-out forwards;
+        }
+        
+        .ellipse-center-small {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: stayInCenterSmall 8s ease-in-out forwards;
+        }
+        
+        /* Moving ellipses that glide to the right */
+        .ellipse-moving-large {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: moveToRight 8s ease-in-out forwards;
+        }
+        
+        .ellipse-moving-medium {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: moveToRightMedium 8s ease-in-out forwards;
+        }
+        
+        .ellipse-moving-small {
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: moveToRightSmall 8s ease-in-out forwards;
+        }
+        
+        /* Final LINES */
+        .line-large,
+        .line-medium,
+        .line-small {
+            opacity: 0;
+            animation: showFinalLines 8s ease-in-out forwards;
+        }
+        
+        /* Keyframe animations */
+        
+        @keyframes fadeInCircles {
+            0% { opacity: 0; }
+            19% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+        
+        /* LARGE circle - cy moves from 0 to -60 during rotation */
+        @keyframes rotateSequenceLarge {
+            /* Fade in at left */
+            0%, 19% {
+                opacity: 0;
+                transform: translate(133px, 150px) translateY(0px) scaleY(1);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(133px, 150px) translateY(0px) scaleY(1);
+            }
+            /* Move to center */
+            44% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(0px) scaleY(1);
+            }
+            /* ROTATE + cy moves UP to -60 */
+            75% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
+            }
+            /* Fade out as ellipses take over */
+            75.1% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
+            }
+        }
+        
+        /* MEDIUM circle - cy moves from 0 to +5 */
+        @keyframes rotateSequenceMedium {
+            0%, 19% {
+                opacity: 0;
+                transform: translate(133px, 150px) translateY(0px) scaleY(1);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(133px, 150px) translateY(0px) scaleY(1);
+            }
+            44% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(0px) scaleY(1);
+            }
+            /* ROTATE + cy moves slightly DOWN to +5 */
+            75% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
+            }
+            75.1% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
+            }
+        }
+        
+        /* SMALL circle - cy moves from 0 to +60 */
+        @keyframes rotateSequenceSmall {
+            0%, 19% {
+                opacity: 0;
+                transform: translate(133px, 150px) translateY(0px) scaleY(1);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(133px, 150px) translateY(0px) scaleY(1);
+            }
+            44% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(0px) scaleY(1);
+            }
+            /* ROTATE + cy moves DOWN to +60 */
+            75% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
+            }
+            75.1% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
+            }
+        }
+        
+        /* Ellipses that STAY in center */
+        @keyframes stayInCenterLarge {
+            0%, 75% {
+                opacity: 0;
+            }
+            75.1% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
+            }
+        }
+        
+        @keyframes stayInCenterMedium {
+            0%, 75% {
+                opacity: 0;
+            }
+            75.1% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
+            }
+        }
+        
+        @keyframes stayInCenterSmall {
+            0%, 75% {
+                opacity: 0;
+            }
+            75.1% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
+            }
+        }
+        
+        /* Ellipses that MOVE to right and rotate further */
+        /* 6-7s (75-87.5%): ONLY GLIDE at constant scaleY(0.35) */
+        /* 7-8s (87.5-100%): ONLY ROTATE from scaleY(0.35) to 0.001 */
+        @keyframes moveToRight {
+            /* Start at center as ellipse */
+            0%, 75% {
+                opacity: 0;
+                transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
+            }
+            75.1% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
+            }
+            /* GLIDE to right - scaleY stays at 0.35! */
+            87.5% {
+                opacity: 1;
+                transform: translate(667px, 150px) translateY(-60px) scaleY(0.35);
+            }
+            /* NOW ROTATE - position stays fixed at right */
+            98% {
+                opacity: 1;
+                transform: translate(667px, 150px) translateY(-60px) scaleY(0.001);
+            }
+            /* Fade out AFTER thick lines appear */
+            99% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(667px, 150px) translateY(-60px) scaleY(0.001);
+            }
+        }
+        
+        @keyframes moveToRightMedium {
+            0%, 75% {
+                opacity: 0;
+                transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
+            }
+            75.1% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
+            }
+            87.5% {
+                opacity: 1;
+                transform: translate(667px, 150px) translateY(5px) scaleY(0.35);
+            }
+            98% {
+                opacity: 1;
+                transform: translate(667px, 150px) translateY(5px) scaleY(0.001);
+            }
+            99% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(667px, 150px) translateY(5px) scaleY(0.001);
+            }
+        }
+        
+        @keyframes moveToRightSmall {
+            0%, 75% {
+                opacity: 0;
+                transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
+            }
+            75.1% {
+                opacity: 1;
+                transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
+            }
+            87.5% {
+                opacity: 1;
+                transform: translate(667px, 150px) translateY(60px) scaleY(0.35);
+            }
+            98% {
+                opacity: 1;
+                transform: translate(667px, 150px) translateY(60px) scaleY(0.001);
+            }
+            99% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(667px, 150px) translateY(60px) scaleY(0.001);
+            }
+        }
+        
+        /* Final lines fade in BEFORE thin lines disappear */
+        @keyframes showFinalLines {
+            0%, 97% {
+                opacity: 0;
+            }
+            98% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        /* Final lines fade in smoothly */
+        @keyframes showFinalLines {
+            0%, 97% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        /* Hover to restart */
+        .animated-logo:hover .circle-left-large,
+        .animated-logo:hover .circle-left-medium,
+        .animated-logo:hover .circle-left-small {
+            animation: fadeInCircles 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .circle-rotating-large {
+            animation: rotateSequenceLarge 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .circle-rotating-medium {
+            animation: rotateSequenceMedium 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .circle-rotating-small {
+            animation: rotateSequenceSmall 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .ellipse-center-large {
+            animation: stayInCenterLarge 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .ellipse-center-medium {
+            animation: stayInCenterMedium 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .ellipse-center-small {
+            animation: stayInCenterSmall 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .ellipse-moving-large {
+            animation: moveToRight 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .ellipse-moving-medium {
+            animation: moveToRightMedium 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .ellipse-moving-small {
+            animation: moveToRightSmall 8s ease-in-out forwards;
+        }
+        
+        .animated-logo:hover .line-large,
+        .animated-logo:hover .line-medium,
+        .animated-logo:hover .line-small {
+            animation: showFinalLines 8s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" class="animated-logo">
+            <title>Perspektive und Wahrheit - Konzentrisch!</title>
+            
+            <!-- Left circles (static, concentric, fade in) -->
+            <circle class="circle-left-large" cx="133" cy="150" r="80" fill="none" stroke="#34585B" stroke-width="5"/>
+            <circle class="circle-left-medium" cx="133" cy="150" r="55" fill="none" stroke="#34585B" stroke-width="5"/>
+            <circle class="circle-left-small" cx="133" cy="150" r="30" fill="none" stroke="#34585B" stroke-width="5"/>
+            
+            <!-- Rotating circles - ALL START AT cy=0 (concentric!) -->
+            <circle class="circle-rotating-large" cx="0" cy="0" r="80" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            <circle class="circle-rotating-medium" cx="0" cy="0" r="55" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            <circle class="circle-rotating-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            
+            <!-- Ellipses that STAY in center (appear at 75% = 6s) -->
+            <!-- ALL start at cy="0" for proper scaleY transformation! -->
+            <!-- vector-effect prevents stroke from being scaled -->
+            <circle class="ellipse-center-large" cx="0" cy="0" r="80" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            <circle class="ellipse-center-medium" cx="0" cy="0" r="55" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            <circle class="ellipse-center-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            
+            <!-- Ellipses that MOVE to right and rotate further -->
+            <circle class="ellipse-moving-large" cx="0" cy="0" r="80" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            <circle class="ellipse-moving-medium" cx="0" cy="0" r="55" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            <circle class="ellipse-moving-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5" vector-effect="non-scaling-stroke"/>
+            
+            <!-- Final LINES (smooth fade in at end) -->
+            <line class="line-large" x1="587" y1="90" x2="747" y2="90" stroke="#34585B" stroke-width="5"/>
+            <line class="line-medium" x1="612" y1="150" x2="722" y2="150" stroke="#34585B" stroke-width="5"/>
+            <line class="line-small" x1="637" y1="210" x2="697" y2="210" stroke="#34585B" stroke-width="5"/>
+        </svg>
+        
+        <div class="instructions">
+            <p><strong>PERFEKT! Gleichmäßige Striche + Getrennte Phasen! (8 Sek.)</strong></p>
+            <p>Hover über das Logo → Animation startet neu</p>
+            <p style="margin-top: 1rem; font-size: 0.9em; color: #666;">
+                0-1.5s: Kreise erscheinen • 1.5-3.5s: Konzentrisch zur Mitte (2s) •<br>
+                3.5-6s: <strong>Rotation + Auseinanderwandern</strong> •<br>
+                6s: <strong>DUPLIZIERUNG!</strong> (Ellipsen bleiben in Mitte + neue wandern) •<br>
+                6-7s: <strong>NUR Gleiten nach rechts</strong> (scaleY bleibt bei 0.35!) •<br>
+                7-8s: <strong>NUR Rotation</strong> (scaleY: 0.35 → 0.001, Position fix)<br>
+                98%: Dicke Linien → 99%: Dünne weg
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.85em; color: #999;">
+                ✨ vector-effect="non-scaling-stroke" → Gleichmäßige Strichbreite!<br>
+                ✨ Gleiten und Rotation jetzt GETRENNT!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
