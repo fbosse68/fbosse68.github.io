@@ -376,9 +376,9 @@
   <circle class="circle-rotating-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5"/>
   
   <!-- Ellipses that STAY in center (appear at 75% = 6s) -->
-  <circle class="ellipse-center-large" cx="0" cy="0" r="80" fill="none" stroke="#34585B" stroke-width="5"/>
-  <circle class="ellipse-center-medium" cx="0" cy="0" r="55" fill="none" stroke="#34585B" stroke-width="5"/>
-  <circle class="ellipse-center-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5"/>
+  <circle class="ellipse-center-large" cx="0" cy="0" r="80" fill="none" stroke="#34585B" stroke-width="5.5"/>
+  <circle class="ellipse-center-medium" cx="0" cy="0" r="55" fill="none" stroke="#34585B" stroke-width="5.5"/>
+  <circle class="ellipse-center-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5.5"/>
   
   <!-- Ellipses that MOVE to right and rotate further -->
   <circle class="ellipse-moving-large" cx="0" cy="0" r="80" fill="none" stroke="#34585B" stroke-width="5"/>
