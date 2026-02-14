@@ -572,8 +572,7 @@
         }
     </style>
 </head>
-    </style>
-</head>
+   
 <body>
     <!-- Navigation -->
     <nav>
@@ -711,40 +710,46 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="kontakt">
-        <h2>Lassen Sie uns sprechen</h2>
-        <p>Wenn Sie Fragen haben oder einen Termin vereinbaren möchten, kontaktieren Sie mich gerne. Ich nehme mir Zeit für ein erstes Kennenlerngespräch.</p>
-        
-        <a href="kontakt.html" class="cta-button">Kontakt aufnehmen</a>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <strong>E-Mail</strong>
-               <a href="dr.florianbosse@posteo.de" target="_blank"><span class="__cf_email__" data-cfemail="c6a2b4e8a0aaa9b4afa7a8a4a9b5b5a386b6a9b5b2a3a9e8a2a3">[email&#160;protected]</span></a>         
-            </div>
-            
-            <div class="contact-item">
-                <strong>YouTube</strong>
-               <a href="https://www.youtube.com/@Dr.FlorianBosse" target="_blank">https://www.youtube.com/@Dr.FlorianBosse</a>
-            </div>
-            
-            <div class="contact-item">
-                <strong>LinkedIn</strong>
-                <a href="https://www.linkedin.com/in/florian-bosse-16296a3ab" target="_blank">https://www.linkedin.com/in/florian-bosse-16296a3ab</a>
-            </div>
-
-            <div class="about-image">
-                <img src="MBSR-Verband-Logo.jpg" alt="MBSR-Logo">
-            </div>
-            
-            <div class="contact-item">
-                <strong>Ort</strong>
-                <span>Göttingen</span>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Dr. Florian Bosse · Begleitung & Achtsamkeit · <a href="impressum.html" style="color: var(--cream); text-decoration: underline;">Impressum</a> · <a href="datenschutz.html" style="color: var(--cream); text-decoration: un
+        <p>&copy; 2026 Dr. Florian Bosse · Begleitung & Achtsamkeit · <a href="impressum.html" style="color: var(--cream); text-decoration: underline;">Impressum</a> · <a href="datenschutz.html" style="color: var(--cream); text-decoration: underline;">Datenschutz</a></p>
+    </footer>
+
+    <script>
+    // Burger Menu Toggle
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navLinks = document.getElementById('navLinks');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    if (burgerMenu && navLinks) {
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+            if (mobileOverlay) {
+                mobileOverlay.classList.toggle('active');
+            }
+        });
+        
+        // Close menu when clicking overlay
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+            });
+        }
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                if (mobileOverlay) {
+                    mobileOverlay.classList.remove('active');
+                }
+            });
+        });
+    }
+    </script>
+</body>
+</html>
