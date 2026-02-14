@@ -18,7 +18,7 @@
     <style>
         /* ===== KONTAKT-SPEZIFISCHE STYLES ===== */
         
-        /* Navigation (kontakt-spezifisch mit nav ul!) */
+        /* Navigation */
         nav {
             background: rgba(250, 250, 248, 0.95);
             backdrop-filter: blur(10px);
@@ -28,22 +28,11 @@
             z-index: 1000;
         }
 
-        nav ul {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
+        
 
-        nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
+        
 
-        nav a:hover {
-            color: var(--petrol);
-        }
+        
 
         /* Main Container */
         .contact-container {
@@ -262,9 +251,7 @@
                 gap: 2rem;
             }
 
-            nav ul {
-                gap: 1.5rem;
-            }
+            
 
             .contact-info-section h1 {
                 font-size: 2rem;
@@ -276,16 +263,7 @@
         }
 
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
+            
 
             .contact-info-section,
             .form-section {
@@ -411,13 +389,10 @@
             }
         }
     
-.contact-container {
+        @media (max-width: 968px) {
+            .contact-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
             }
 
             .contact-info-section h1 {
@@ -434,16 +409,7 @@
                 height: 36px;
             }
 
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
+            
 
             .contact-info-section,
             .form-section {
@@ -491,7 +457,7 @@
             
             <div class="info-item">
                 <h3>E-Mail</h3>
-                 <a href="mailto:dr.florianbosse@posteo.de" target="_blank">dr.florianbosse@posteo.de</a> 
+                 <a href="/cdn-cgi/l/email-protection#17736539717b78657e7679757864647257677864637278397372" target="_blank"><span class="__cf_email__" data-cfemail="0460762a62686b766d656a666b77776144746b7770616b2a6061">[email&#160;protected]</span></a> 
             </div>
             
            
@@ -569,8 +535,7 @@
         </div>
     </footer>
 
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Form submission handling
         const form = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
@@ -606,14 +571,4 @@
         // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                burgerMenu.classList.remove('active');
-                if (mobileOverlay) {
-                    mobileOverlay.classList.remove('active');
-                }
-            });
-        });
-    }
-    </script>
-</body>
-</html>
+                navLinks.classList
