@@ -1,4 +1,4 @@
-# robots.txt für fbosse68.github.io
+# robots.txt für drbosse.de
 # Sagt Suchmaschinen, was sie crawlen dürfen
 
 User-agent: *
