@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" class="animated-logo">
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" class="animated-logo logo-image">
   <title>Perspektive und Wahrheit - Animiert</title>
   
   <style>
@@ -79,6 +78,22 @@
       transform-box: fill-box;
       transform-origin: 50% 50%;
       animation: moveToRightSmall 8s ease-in-out forwards;
+    }
+    
+    /* Real ellipses fade in at the right moment */
+    .real-ellipse-large,
+    .real-ellipse-medium,
+    .real-ellipse-small {
+      opacity: 0;
+      animation: showRealEllipses 8s ease-in-out forwards;
+    }
+    
+    /* Lines grow stroke-width - NOW CSS BASED FOR PERFECT SYNC! */
+    .line-large,
+    .line-medium,
+    .line-small {
+      stroke-width: 0;
+      animation: growStrokeWidth 8s ease-in-out forwards;
     }
     
     /* Keyframe animations */
@@ -317,13 +332,6 @@
     }
     
     /* Real ellipses fade in at the right moment */
-    .real-ellipse-large,
-    .real-ellipse-medium,
-    .real-ellipse-small {
-      opacity: 0;
-      animation: showRealEllipses 8s ease-in-out forwards;
-    }
-    
     @keyframes showRealEllipses {
       0%, 93% {
         opacity: 0;
@@ -333,6 +341,22 @@
       }
       100% {
         opacity: 1;
+      }
+    }
+    
+    /* Lines grow stroke-width - synchronized with CSS animations! */
+    @keyframes growStrokeWidth {
+      0%, 93% {
+        stroke-width: 0;
+      }
+      94% {
+        stroke-width: 0;
+      }
+      98% {
+        stroke-width: 5;
+      }
+      100% {
+        stroke-width: 5;
       }
     }
     
@@ -384,6 +408,12 @@
     svg:hover .real-ellipse-small {
       animation: showRealEllipses 8s ease-in-out forwards;
     }
+    
+    svg:hover .line-large,
+    svg:hover .line-medium,
+    svg:hover .line-small {
+      animation: growStrokeWidth 8s ease-in-out forwards;
+    }
   </style>
   
   <!-- Left circles (static, concentric, fade in) -->
@@ -413,14 +443,8 @@
     <ellipse class="real-ellipse-small" cx="0" cy="60" rx="30" ry="11" fill="none" stroke="#34585B" stroke-width="5"/>
   </g>
   
-  <!-- Final LINES with GROWING stroke-width (smooth transition!) -->
-  <line class="line-large" x1="587" y1="90" x2="747" y2="90" stroke="#34585B" stroke-width="0">
-    <animate attributeName="stroke-width" from="0" to="5" begin="7.52s" dur="0.32s" fill="freeze"/>
-  </line>
-  <line class="line-medium" x1="612" y1="155" x2="722" y2="155" stroke="#34585B" stroke-width="0">
-    <animate attributeName="stroke-width" from="0" to="5" begin="7.52s" dur="0.32s" fill="freeze"/>
-  </line>
-  <line class="line-small" x1="637" y1="210" x2="697" y2="210" stroke="#34585B" stroke-width="0">
-    <animate attributeName="stroke-width" from="0" to="5" begin="7.52s" dur="0.32s" fill="freeze"/>
-  </line>
+  <!-- Final LINES - NOW CSS ANIMATED FOR PERFECT SYNC! -->
+  <line class="line-large" x1="587" y1="90" x2="747" y2="90" stroke="#34585B" stroke-width="5"/>
+  <line class="line-medium" x1="612" y1="155" x2="722" y2="155" stroke="#34585B" stroke-width="5"/>
+  <line class="line-small" x1="637" y1="210" x2="697" y2="210" stroke="#34585B" stroke-width="5"/>
 </svg>
