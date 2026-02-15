@@ -187,8 +187,16 @@
         opacity: 1;
         transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
       }
-      100% {
+      /* Fade out before real ellipses appear */
+      97% {
         opacity: 1;
+        transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
+      }
+      98% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
         transform: translate(400px, 150px) translateY(-60px) scaleY(0.35);
       }
     }
@@ -201,8 +209,15 @@
         opacity: 1;
         transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
       }
-      100% {
+      97% {
         opacity: 1;
+        transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
+      }
+      98% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
         transform: translate(400px, 150px) translateY(5px) scaleY(0.35);
       }
     }
@@ -215,8 +230,15 @@
         opacity: 1;
         transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
       }
-      100% {
+      97% {
         opacity: 1;
+        transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
+      }
+      98% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
         transform: translate(400px, 150px) translateY(60px) scaleY(0.35);
       }
     }
@@ -315,6 +337,26 @@
       }
     }
     
+    /* Real ellipses fade in at the very end */
+    .real-ellipse-large,
+    .real-ellipse-medium,
+    .real-ellipse-small {
+      opacity: 0;
+      animation: showRealEllipses 8s ease-in-out forwards;
+    }
+    
+    @keyframes showRealEllipses {
+      0%, 97% {
+        opacity: 0;
+      }
+      98% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
     /* Hover to restart */
     svg:hover .circle-left-large,
     svg:hover .circle-left-medium,
@@ -363,6 +405,12 @@
     svg:hover .line-small {
       animation: showFinalLines 8s ease-in-out forwards;
     }
+    
+    svg:hover .real-ellipse-large,
+    svg:hover .real-ellipse-medium,
+    svg:hover .real-ellipse-small {
+      animation: showRealEllipses 8s ease-in-out forwards;
+    }
   </style>
   
   <!-- Left circles (static, concentric, fade in) -->
@@ -384,6 +432,13 @@
   <circle class="ellipse-moving-large" cx="0" cy="0" r="80" fill="none" stroke="#34585B" stroke-width="5"/>
   <circle class="ellipse-moving-medium" cx="0" cy="0" r="55" fill="none" stroke="#34585B" stroke-width="5"/>
   <circle class="ellipse-moving-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5"/>
+  
+  <!-- REAL ellipses in center (appear at 98% = end, replacing rotated circles) -->
+  <g transform="translate(400, 150)">
+    <ellipse class="real-ellipse-large" cx="0" cy="-60" rx="80" ry="28" fill="none" stroke="#34585B" stroke-width="5"/>
+    <ellipse class="real-ellipse-medium" cx="0" cy="5" rx="55" ry="18" fill="none" stroke="#34585B" stroke-width="5"/>
+    <ellipse class="real-ellipse-small" cx="0" cy="60" rx="30" ry="11" fill="none" stroke="#34585B" stroke-width="5"/>
+  </g>
   
   <!-- Final LINES (smooth fade in at end) -->
   <line class="line-large" x1="587" y1="90" x2="747" y2="90" stroke="#34585B" stroke-width="5"/>
