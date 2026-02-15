@@ -77,7 +77,8 @@ nav {
 .logo-image {
     height: 40px;
     width: auto;
-    display: block;
+    display: inline-block;  /* ← block macht das SVG zu breit! */
+    vertical-align: middle;
 }
 
 /* ===== BACK LINK (Unterseiten) ===== */
