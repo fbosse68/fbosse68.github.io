@@ -81,14 +81,6 @@
       animation: moveToRightSmall 8s ease-in-out forwards;
     }
     
-    /* Final LINES */
-    .line-large,
-    .line-medium,
-    .line-small {
-      opacity: 0;
-      animation: showFinalLines 8s ease-in-out forwards;
-    }
-    
     /* Keyframe animations */
     
     @keyframes fadeInCircles {
@@ -324,20 +316,7 @@
       }
     }
     
-    /* Final lines fade in BEFORE thin lines disappear */
-    @keyframes showFinalLines {
-      0%, 97% {
-        opacity: 0;
-      }
-      98% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    
-    /* Real ellipses fade in at the very end */
+    /* Real ellipses fade in at the right moment */
     .real-ellipse-large,
     .real-ellipse-medium,
     .real-ellipse-small {
@@ -346,10 +325,10 @@
     }
     
     @keyframes showRealEllipses {
-      0%, 97% {
+      0%, 93% {
         opacity: 0;
       }
-      98% {
+      94% {
         opacity: 1;
       }
       100% {
@@ -400,12 +379,6 @@
       animation: moveToRightSmall 8s ease-in-out forwards;
     }
     
-    svg:hover .line-large,
-    svg:hover .line-medium,
-    svg:hover .line-small {
-      animation: showFinalLines 8s ease-in-out forwards;
-    }
-    
     svg:hover .real-ellipse-large,
     svg:hover .real-ellipse-medium,
     svg:hover .real-ellipse-small {
@@ -433,15 +406,21 @@
   <circle class="ellipse-moving-medium" cx="0" cy="0" r="55" fill="none" stroke="#34585B" stroke-width="5"/>
   <circle class="ellipse-moving-small" cx="0" cy="0" r="30" fill="none" stroke="#34585B" stroke-width="5"/>
   
-  <!-- REAL ellipses in center (appear at 98% = end, replacing rotated circles) -->
+  <!-- REAL ellipses in center (appear gradually) -->
   <g transform="translate(400, 150)">
     <ellipse class="real-ellipse-large" cx="0" cy="-60" rx="80" ry="28" fill="none" stroke="#34585B" stroke-width="5"/>
     <ellipse class="real-ellipse-medium" cx="0" cy="5" rx="55" ry="18" fill="none" stroke="#34585B" stroke-width="5"/>
     <ellipse class="real-ellipse-small" cx="0" cy="60" rx="30" ry="11" fill="none" stroke="#34585B" stroke-width="5"/>
   </g>
   
-  <!-- Final LINES (smooth fade in at end) -->
-  <line class="line-large" x1="587" y1="90" x2="747" y2="90" stroke="#34585B" stroke-width="5"/>
-  <line class="line-medium" x1="612" y1="155" x2="722" y2="155" stroke="#34585B" stroke-width="5"/>
-  <line class="line-small" x1="637" y1="210" x2="697" y2="210" stroke="#34585B" stroke-width="5"/>
+  <!-- Final LINES with GROWING stroke-width (smooth transition!) -->
+  <line class="line-large" x1="587" y1="90" x2="747" y2="90" stroke="#34585B" stroke-width="0">
+    <animate attributeName="stroke-width" from="0" to="5" begin="7.52s" dur="0.32s" fill="freeze"/>
+  </line>
+  <line class="line-medium" x1="612" y1="155" x2="722" y2="155" stroke="#34585B" stroke-width="0">
+    <animate attributeName="stroke-width" from="0" to="5" begin="7.52s" dur="0.32s" fill="freeze"/>
+  </line>
+  <line class="line-small" x1="637" y1="210" x2="697" y2="210" stroke="#34585B" stroke-width="0">
+    <animate attributeName="stroke-width" from="0" to="5" begin="7.52s" dur="0.32s" fill="freeze"/>
+  </line>
 </svg>
