@@ -424,7 +424,7 @@
             
             <div class="info-item">
                 <h3>E-Mail</h3>
-                 <a href="mailto:dr.florianbosse&#64;posteo.de" target="_blank">dr.florianbosse@posteo.de</a> 
+                 <a href="/cdn-cgi/l/email-protection#3551471b53595a475c545b575a464650131603010e455a4641505a1b5150" target="_blank"><span class="__cf_email__" data-cfemail="3d594f135b51524f545c535f524e4e587d4d524e495852135958">[email&#160;protected]</span></a> 
             </div>
             
            
@@ -449,7 +449,7 @@
                 Vielen Dank für Ihre Nachricht! Ich melde mich zeitnah bei Ihnen.
             </div>
             
-            <form id="contactForm" action="https://formspree.io/f/meelqrkl" method="POST">
+            <form id="contactForm" action="https://mbsr.drbosse.de/mail.php" method="POST">
                 <div class="form-group">
                     <label for="name">Name <span class="required">*</span></label>
                     <input type="text" id="name" name="name" required>
@@ -465,6 +465,9 @@
                     <textarea id="message" name="message" required></textarea>
                 </div>
                 
+                <!-- Spam-Schutz Honeypot (unsichtbar für Benutzer) -->
+                <input type="text" name="website" value="" style="display:none" tabindex="-1" autocomplete="off">
+                
                 <button type="submit" class="submit-button">Nachricht senden</button>
             </form>
         </div>
@@ -475,24 +478,28 @@
         <p>&copy; 2026 Dr. Florian Bosse · Begleitung & Achtsamkeit · <a href="impressum.html" style="color: var(--cream); text-decoration: underline;">Impressum</a> · <a href="datenschutz.html" style="color: var(--cream); text-decoration: underline;">Datenschutz</a></p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-    // Form submission handling
-    const form = document.getElementById('contactForm');
+    // Form submission handling - Strato VPS PHP Mailer
     const successMessage = document.getElementById('successMessage');
-
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            // Formspree handles the actual submission
-            // Show success message after submission
-            setTimeout(function() {
-                successMessage.style.display = 'block';
-                form.reset();
-                
-                // Scroll to success message
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
-        });
+    
+    // Status aus URL auslesen (nach Weiterleitung von mail.php)
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    
+    if (status === 'ok' && successMessage) {
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    if (status === 'fehler') {
+        const form = document.getElementById('contactForm');
+        if (form) {
+            const fehler = document.createElement('div');
+            fehler.style.cssText = 'color: #c0392b; background: #fde8e8; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;';
+            fehler.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie direkt an info@drbosse.de';
+            form.insertBefore(fehler, form.firstChild);
+        }
     }
     </script>
 
@@ -523,14 +530,4 @@
         // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                burgerMenu.classList.remove('active');
-                if (mobileOverlay) {
-                    mobileOverlay.classList.remove('active');
-                }
-            });
-        });
-    }
-    </script>
-</body>
-</html>
+                navLinks.class
