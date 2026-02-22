@@ -413,6 +413,7 @@
                 <li><a href="index.php#ueber-mich">Über mich</a></li>
                 <li><a href="index.php#ansatz">Mein Ansatz</a></li>
                 <li><a href="index.php#angebote">Angebote</a></li>
+                <li><a href="medien.php">Medien</a></li>
                 <li><a href="kontakt.php">Kontakt</a></li>
             </ul>
         </div>
