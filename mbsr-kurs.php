@@ -609,6 +609,95 @@
             </div>
         </section>
 
+        <!-- Downloadbereich Kursteilnehmer -->
+        <section class="content">
+            <div class="download-section">
+                <h2>Materialien für Kursteilnehmer</h2>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                    Die folgenden Materialien sind nur für Kursteilnehmer zugänglich. 
+                    Bitte geben Sie das Passwort ein, das Sie im Kurs erhalten haben.
+                </p>
+
+                <div class="download-category">
+                    <h3>📄 Kursunterlagen</h3>
+                    <ul class="download-list">
+                        <li>
+                            <div class="download-link" onclick="downloadDatei('beispiel.pdf', 'kurs')">
+                                <span class="download-icon">📄</span>
+                                <div class="download-info">
+                                    <div class="download-title">Beispiel-Dokument</div>
+                                    <div class="download-meta">PDF · 1.2 MB</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Passwort-Dialog -->
+        <div id="pw-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+            <div style="background:white; padding:2.5rem; border-radius:12px; max-width:400px; width:90%; text-align:center;">
+                <h3 style="margin-bottom:1rem; color:var(--text-primary);">Passwort erforderlich</h3>
+                <p style="margin-bottom:1.5rem; color:var(--text-secondary); font-size:0.95rem;">Bitte geben Sie das Kurspasswort ein.</p>
+                <input type="password" id="pw-input" placeholder="Passwort" 
+                    style="width:100%; padding:0.8rem 1rem; border:1px solid rgba(52,88,91,0.3); border-radius:8px; font-size:1rem; margin-bottom:1rem; box-sizing:border-box;">
+                <div id="pw-fehler" style="display:none; color:#c0392b; margin-bottom:1rem; font-size:0.9rem;">Falsches Passwort</div>
+                <div style="display:flex; gap:1rem; justify-content:center;">
+                    <button onclick="pwAbbrechen()" style="padding:0.8rem 1.5rem; border:1px solid var(--petrol); background:white; color:var(--petrol); border-radius:50px; cursor:pointer; font-size:0.95rem;">Abbrechen</button>
+                    <button onclick="pwBestaetigen()" style="padding:0.8rem 1.5rem; background:var(--petrol); color:white; border:none; border-radius:50px; cursor:pointer; font-size:0.95rem;">Download</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        let aktiveDatei = null;
+        let aktiverOrdner = null;
+
+        function downloadDatei(datei, ordner) {
+            aktiveDatei = datei;
+            aktiverOrdner = ordner;
+            document.getElementById('pw-input').value = '';
+            document.getElementById('pw-fehler').style.display = 'none';
+            const overlay = document.getElementById('pw-overlay');
+            overlay.style.display = 'flex';
+        }
+
+        function pwAbbrechen() {
+            document.getElementById('pw-overlay').style.display = 'none';
+        }
+
+        async function pwBestaetigen() {
+            const pw = document.getElementById('pw-input').value;
+            const formData = new FormData();
+            formData.append('passwort', pw);
+
+            const response = await fetch(
+                'download.php?datei=' + aktiveDatei + '&ordner=' + aktiverOrdner,
+                { method: 'POST', body: formData }
+            );
+
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = aktiveDatei;
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.getElementById('pw-overlay').style.display = 'none';
+            } else if (response.status === 401) {
+                document.getElementById('pw-fehler').style.display = 'block';
+            } else {
+                alert('Fehler beim Download.');
+            }
+        }
+
+        document.getElementById('pw-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') pwBestaetigen();
+        });
+        </script>
+
         <!-- CTA Section -->
         <div class="cta-section">
             <h2>Bereit für den nächsten Schritt?</h2>
