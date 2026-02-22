@@ -308,3 +308,15 @@ section {
     margin: 0 auto;
     font-weight: 300;
 }
+
+/* ===== APPROACH PHOTO (Unterseiten Hero) ===== */
+.approach-photo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
