@@ -50,7 +50,8 @@ $headers  = "From: noreply@drbosse.de\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-$gesendet = mail($empfaenger, $betreff_prefix, $nachricht_text, $headers);
+$betreff = $betreff_prefix . $name . " - " . substr($nachricht, 0, 50) . "...";
+$gesendet = mail($empfaenger, $betreff, $nachricht_text, $headers);
 
 if ($gesendet) {
     header("Location: " . $weiterleitung_ok);
