@@ -1,5 +1,5 @@
 <?php
-$passwort = "mbsr2026";
+$passwort = "heartfulness26";
 $erlaubte_ordner = ["kurs", "oeffentlich"];
 $geschuetzte_ordner = ["kurs"];
 

@@ -618,18 +618,34 @@
                     Bitte geben Sie das Passwort ein, das Sie im Kurs erhalten haben.
                 </p>
 
+                <!-- Handbuch -->
                 <div class="download-category">
-                    <h3>📄 Kursunterlagen</h3>
+                    <h3>📖 Handbuch</h3>
                     <ul class="download-list">
-                        <li>
-                            <div class="download-link" onclick="downloadDatei('beispiel.pdf', 'kurs')">
-                                <span class="download-icon">📄</span>
-                                <div class="download-info">
-                                    <div class="download-title">Beispiel-Dokument</div>
-                                    <div class="download-meta">PDF · 1.2 MB</div>
-                                </div>
+                        <?php
+                        include_once __DIR__ . '/downloads/kurs/freigabe.php';
+                        for ($w = 1; $w <= 8; $w++):
+                            if (in_array($w, $freigeschaltet)):
+                        ?>
+                        <li><div class="download-link" onclick="downloadDatei('woche<?php echo $w; ?>.pdf', 'kurs')">
+                            <span class="download-icon">📄</span>
+                            <div class="download-info">
+                                <div class="download-title">Woche <?php echo $w; ?></div>
+                                <div class="download-meta">PDF</div>
                             </div>
-                        </li>
+                        </div></li>
+                        <?php endif; endfor; ?>
+                    </ul>
+                </div>
+
+                <!-- Audiodateien -->
+                <div class="download-category">
+                    <h3>🎧 Audiodateien</h3>
+                    <ul class="download-list">
+                        <li><div class="download-link" onclick="downloadDatei('bodyscan.mp3', 'kurs')">
+                            <span class="download-icon">🎵</span>
+                            <div class="download-info"><div class="download-title">Body Scan</div><div class="download-meta">MP3</div></div>
+                        </div></li>
                     </ul>
                 </div>
             </div>
