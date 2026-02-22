@@ -617,6 +617,19 @@
                     Die folgenden Materialien sind nur für Kursteilnehmer zugänglich. 
                     Bitte geben Sie das Passwort ein, das Sie im Kurs erhalten haben.
                 </p>
+                <!-- Anmeldung -->
+                <div class="download-category">
+                    <h3>📋 Anmeldung</h3>
+                    <ul class="download-list">
+                        <li><div class="download-link" onclick="downloadDatei('MBSR_Anmeldeformular_2025_3.pdf', 'kurs')">
+                            <span class="download-icon">📄</span>
+                            <div class="download-info">
+                                <div class="download-title">Anmeldeformular MBSR 2025</div>
+                                <div class="download-meta">PDF</div>
+                            </div>
+                        </div></li>
+                    </ul>
+                </div>
 
                 <!-- Handbuch -->
                 <div class="download-category">
@@ -656,8 +669,12 @@
             <div style="background:white; padding:2.5rem; border-radius:12px; max-width:400px; width:90%; text-align:center;">
                 <h3 style="margin-bottom:1rem; color:var(--text-primary);">Passwort erforderlich</h3>
                 <p style="margin-bottom:1.5rem; color:var(--text-secondary); font-size:0.95rem;">Bitte geben Sie das Kurspasswort ein.</p>
-                <input type="password" id="pw-input" placeholder="Passwort" 
-                    style="width:100%; padding:0.8rem 1rem; border:1px solid rgba(52,88,91,0.3); border-radius:8px; font-size:1rem; margin-bottom:1rem; box-sizing:border-box;">
+                <div style="position:relative; width:100%; margin-bottom:1rem;">
+                    <input type="password" id="pw-input" placeholder="Passwort"
+                        style="width:100%; padding:0.8rem 2.5rem 0.8rem 1rem; border:1px solid rgba(52,88,91,0.3); border-radius:8px; font-size:1rem; box-sizing:border-box;">
+                    <span onclick="togglePwSichtbar()" id="pw-auge"
+                        style="position:absolute; right:0.7rem; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.1rem; user-select:none;">👁️</span>
+                </div>
                 <div id="pw-fehler" style="display:none; color:#c0392b; margin-bottom:1rem; font-size:0.9rem;">Falsches Passwort</div>
                 <div style="display:flex; gap:1rem; justify-content:center;">
                     <button onclick="pwAbbrechen()" style="padding:0.8rem 1.5rem; border:1px solid var(--petrol); background:white; color:var(--petrol); border-radius:50px; cursor:pointer; font-size:0.95rem;">Abbrechen</button>
@@ -669,6 +686,17 @@
         <script>
         let aktiveDatei = null;
         let aktiverOrdner = null;
+        function togglePwSichtbar() {
+            const inp = document.getElementById('pw-input');
+            const auge = document.getElementById('pw-auge');
+            if (inp.type === 'password') {
+                inp.type = 'text';
+                auge.textContent = '🙈';
+            } else {
+                inp.type = 'password';
+                auge.textContent = '👁️';
+            }
+        }
 
         function downloadDatei(datei, ordner) {
             aktiveDatei = datei;
