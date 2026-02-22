@@ -1,0 +1,11 @@
+# robots.txt für drbosse.de
+# Sagt Suchmaschinen, was sie crawlen dürfen
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://drbosse.de/sitemap.xml
+
+# Optionale Verzögerung (höflich zu Servern)
+Crawl-delay: 1

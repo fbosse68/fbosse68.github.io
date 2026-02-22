@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Perspektive und Wahrheit</title>
+  
+  <!-- Left: Three Concentric Circles (Top View) -->
+  <g transform="translate(133, 150)">
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#000000" stroke-width="5"/>
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#000000" stroke-width="5"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#000000" stroke-width="5"/>
+  </g>
+  
+  <!-- Center: Three Ellipses (Perspective View - higher angle, wider) -->
+  <g transform="translate(400, 150)">
+    <ellipse cx="0" cy="-60" rx="80" ry="28" fill="none" stroke="#000000" stroke-width="5"/>
+    <ellipse cx="0" cy="5" rx="55" ry="18" fill="none" stroke="#000000" stroke-width="5"/>
+    <ellipse cx="0" cy="60" rx="30" ry="11" fill="none" stroke="#000000" stroke-width="5"/>
+  </g>
+  
+  <!-- Right: Three Horizontal Lines (Side View) -->
+  <g transform="translate(667, 150)">
+    <line x1="-80" y1="-60" x2="80" y2="-60" stroke="#000000" stroke-width="5"/>
+    <line x1="-55" y1="5" x2="55" y2="5" stroke="#000000" stroke-width="5"/>
+    <line x1="-30" y1="60" x2="30" y2="60" stroke="#000000" stroke-width="5"/>
+  </g>
+</svg>
