@@ -621,13 +621,13 @@
                 <div class="download-category">
                     <h3>📋 Anmeldung</h3>
                     <ul class="download-list">
-                        <li><div class="download-link" onclick="downloadDatei('MBSR_Anmeldeformular_2025_3.pdf', 'kurs')">
+                        <li><a href="downloads/oeffentlich/MBSR_Anmeldeformular_2025_3.pdf" target="_blank" class="download-link" style="text-decoration:none; display:flex; align-items:center; gap:0.75rem;">
                             <span class="download-icon">📄</span>
                             <div class="download-info">
                                 <div class="download-title">Anmeldeformular MBSR 2025</div>
                                 <div class="download-meta">PDF</div>
                             </div>
-                        </div></li>
+                        </a></li>
                     </ul>
                 </div>
 
