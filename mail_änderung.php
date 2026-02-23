@@ -1,6 +1,6 @@
 <?php
 $empfaenger     = "dr.florianbosse@posteo.de";
-$betreff_prefix = "Kontaktformular ";
+$betreff_prefix = "[Kontaktformular drbosse.de] ";
 $weiterleitung_ok     = "https://drbosse.de/kontakt.php?status=ok";
 $weiterleitung_fehler = "https://drbosse.de/kontakt.php?status=fehler";
 
