@@ -464,10 +464,16 @@
                 </div>
                 
                 <div class="week-item">
-                    <h3>Woche 6: Achtsame Kommunikation</h3>
-                    <p>Tag der Achtsamkeit (ganztägige Praxis in Stille)</p>
+                    <h3>Tag der Achtsamkeit</h3>
+                    <p>Ganztägige Praxis in Stille</p>
+                    <p>Meditationen: Gleichmut, Herzensgüte</p>
                 </div>
                 
+                <div class="week-item">
+                    <h3>Woche 6: Achtsame Kommunikation</h3>
+                    <p>Achtsamkeit in Beziehungen</p>
+                </div>
+                               
                 <div class="week-item">
                     <h3>Woche 7: Für sich selbst sorgen</h3>
                     <p>Selbstfürsorge ohne Selbstoptimierung, Integration in den Alltag</p>
@@ -625,10 +631,10 @@
                 <div class="download-category">
                     <h3>📋 Anmeldung</h3>
                     <ul class="download-list">
-                        <li><a href="downloads/oeffentlich/MBSR_Anmeldeformular_2025_3.pdf" target="_blank" class="download-link" style="text-decoration:none; display:flex; align-items:center; gap:0.75rem;">
+                        <li><a href="downloads/oeffentlich/MBSR_Anmeldeformular_3-2026.pdf" target="_blank" class="download-link" style="text-decoration:none; display:flex; align-items:center; gap:0.75rem;">
                             <span class="download-icon">📄</span>
                             <div class="download-info">
-                                <div class="download-title">Anmeldeformular MBSR 2025</div>
+                                <div class="download-title">Anmeldeformular MBSR-Kurs Frühjahr 2026</div>
                                 <div class="download-meta">PDF</div>
                             </div>
                         </a></li>
