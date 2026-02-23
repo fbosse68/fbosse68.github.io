@@ -45,7 +45,8 @@
         }
 
         section {
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
+            padding: 2.5rem 2rem;
         }
 
         h2 {
@@ -83,18 +84,25 @@
         /* Course Structure */
         .course-structure {
             display: grid;
-            gap: 1.5rem;
-            margin: 2rem 0;
+            gap: 0.4rem;
+            margin: 1.5rem 0;
         }
-
         .week-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+            padding: 0.6rem 1rem;
             border-left: 3px solid var(--petrol-lighter);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-
+        .week-item h3 {
+            color: var(--petrol);
+            font-size: 1rem;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+        .week-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
         .week-item h4 {
             color: var(--petrol);
             margin-bottom: 0.5rem;
