@@ -613,10 +613,6 @@
         <section class="content">
             <div class="download-section">
                 <h2>Materialien für Kursteilnehmer</h2>
-                <p style="margin-bottom: 2rem; color: var(--text-secondary);">
-                    Die folgenden Materialien sind nur für Kursteilnehmer zugänglich. 
-                    Bitte geben Sie das Passwort ein, das Sie im Kurs erhalten haben.
-                </p>
                 <!-- Anmeldung -->
                 <div class="download-category">
                     <h3>📋 Anmeldung</h3>
@@ -631,6 +627,22 @@
                     </ul>
                 </div>
 
+                <!-- Passwort-Zugang -->
+                <div id="pw-zugang">
+                    <div style="margin:2rem 0; padding:1.5rem; background:var(--cream-light); border-radius:12px; text-align:center;">
+                        <p style="margin-bottom:1rem; color:var(--text-secondary);">Die folgenden Materialien sind nur für Kursteilnehmer zugänglich. Bitte geben Sie das Passwort ein, das Sie im Kurs erhalten haben.</p>
+                        <div style="position:relative; max-width:300px; margin:0 auto 1rem;">
+                            <input type="password" id="bereich-pw" placeholder="Passwort"
+                                style="width:100%; padding:0.8rem 2.5rem 0.8rem 1rem; border:1px solid rgba(52,88,91,0.3); border-radius:8px; font-size:1rem; box-sizing:border-box;">
+                            <span onclick="toggleBereichPw()" id="bereich-auge"
+                                style="position:absolute; right:0.7rem; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.1rem; user-select:none;">👁️</span>
+                        </div>
+                        <div id="bereich-fehler" style="display:none; color:#c0392b; margin-bottom:1rem; font-size:0.9rem;">Falsches Passwort</div>
+                        <button onclick="bereichEntsprerren()" style="padding:0.8rem 2rem; background:var(--petrol); color:white; border:none; border-radius:50px; cursor:pointer; font-size:0.95rem;">Zugang öffnen</button>
+                    </div>
+                </div>
+                <!-- Geschuetzter Bereich -->
+                <div id="geschuetzter-bereich" style="display:none;">
                 <!-- Handbuch -->
                 <div class="download-category">
                     <h3>📖 Handbuch</h3>
@@ -686,6 +698,44 @@
         <script>
         let aktiveDatei = null;
         let aktiverOrdner = null;
+
+        // Bereich-Passwort beim Laden pruefen
+        (function() {
+            const pw = sessionStorage.getItem('kursPw');
+            if (pw) {
+                document.getElementById('pw-zugang').style.display = 'none';
+                document.getElementById('geschuetzter-bereich').style.display = 'block';
+            }
+        })();
+
+        function toggleBereichPw() {
+            const inp = document.getElementById('bereich-pw');
+            const auge = document.getElementById('bereich-auge');
+            inp.type = inp.type === 'password' ? 'text' : 'password';
+            auge.textContent = inp.type === 'password' ? '👁️' : '🙈';
+        }
+
+        async function bereichEntsprerren() {
+            const pw = document.getElementById('bereich-pw').value;
+            const formData = new FormData();
+            formData.append('passwort', pw);
+            const response = await fetch(
+                'download.php?datei=freigabe.php&ordner=kurs',
+                { method: 'POST', body: formData }
+            );
+            if (response.ok || response.status === 404) {
+                sessionStorage.setItem('kursPw', pw);
+                document.getElementById('pw-zugang').style.display = 'none';
+                document.getElementById('geschuetzter-bereich').style.display = 'block';
+            } else if (response.status === 401) {
+                document.getElementById('bereich-fehler').style.display = 'block';
+            }
+        }
+
+        document.getElementById('bereich-pw').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') bereichEntsprerren();
+        });
+
         function togglePwSichtbar() {
             const inp = document.getElementById('pw-input');
             const auge = document.getElementById('pw-auge');
@@ -698,13 +748,26 @@
             }
         }
 
-        function downloadDatei(datei, ordner) {
-            aktiveDatei = datei;
-            aktiverOrdner = ordner;
-            document.getElementById('pw-input').value = '';
-            document.getElementById('pw-fehler').style.display = 'none';
-            const overlay = document.getElementById('pw-overlay');
-            overlay.style.display = 'flex';
+        async function downloadDatei(datei, ordner) {
+            const pw = sessionStorage.getItem('kursPw');
+            if (!pw) return;
+            const formData = new FormData();
+            formData.append('passwort', pw);
+            const response = await fetch(
+                'download.php?datei=' + datei + '&ordner=' + ordner,
+                { method: 'POST', body: formData }
+            );
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = datei;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            } else {
+                alert('Fehler beim Download.');
+            }
         }
 
         function pwAbbrechen() {
