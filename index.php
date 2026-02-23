@@ -468,6 +468,18 @@
         </div>
         
         <div class="services-grid">
+            
+             <a href="mbsr-kurs.php" class="service-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+                <h3>MBSR-Kurse</h3>
+                <p>8-Wochen-Programm zur Stressbewältigung durch Achtsamkeit. Wissenschaftlich erforscht, praktisch erprobt. In kleinen Gruppen mit viel Raum für Erfahrung.</p>
+                <ul class="service-features">
+                    <li>8 Wochen à 2,5 Stunden</li>
+                    <li>Ein Tag der Achtsamkeit</li>
+                    <li>Tägliche Übungspraxis zu Hause</li>
+                </ul>
+                <span style="display: inline-block; margin-top: 1rem; color: var(--petrol); font-weight: 500;">Mehr erfahren →</span>
+            </a>
+            
             <div class="service-card">
                 <h3>Schmerztherapie</h3>
                 <p>Begleitung bei chronischem Schmerz, Belastungen, Angst oder schwierigen Lebensphasen. Einzelsitzungen in ruhiger Atmosphäre wo Veränderung in ihrem eigenen Tempo geschehen darf.</p>
@@ -479,6 +491,8 @@
                 </ul>
             </div>
             
+           
+            
             <div class="service-card">
                 <h3>Coaching & Beratung</h3>
                 <p>Unterstützung in Übergangsphasen, bei beruflichen Veränderungen oder persönlicher Weiterentwicklung. Klar, ressourcenorientiert, auf Augenhöhe.</p>
@@ -488,17 +502,7 @@
                     <li>Supervision für Begleiter</li>
                 </ul>
             </div>
-            
-            <a href="mbsr-kurs.php" class="service-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
-                <h3>MBSR-Kurse</h3>
-                <p>8-Wochen-Programm zur Stressbewältigung durch Achtsamkeit. Wissenschaftlich erforscht, praktisch erprobt. In kleinen Gruppen mit viel Raum für Erfahrung.</p>
-                <ul class="service-features">
-                    <li>8 Wochen à 2,5 Stunden</li>
-                    <li>Ein Tag der Achtsamkeit</li>
-                    <li>Tägliche Übungspraxis zu Hause</li>
-                </ul>
-                <span style="display: inline-block; margin-top: 1rem; color: var(--petrol); font-weight: 500;">Mehr erfahren →</span>
-            </a>
+                  
         </div>
     </section>
 
