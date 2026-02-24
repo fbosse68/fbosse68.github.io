@@ -15,7 +15,7 @@
     
     <!-- Open Graph (Social Media) -->
     <meta property="og:title" content="Dr. Florian Bosse - Schmerztherapie & Achtsamkeit">
-    <meta property="og:description" content="Facharzt für Schmerztherapie in Göttingen. Integrativer Ansatz: Neurobiologie, Achtsamkeit & systemische Methoden.">
+    <meta property="og:description" content="Facharzt für Schmerztherapie in Göttingen. Integrativer Ansatz: Neurobiologie, Achtsamkeit & systemischer und hypnosystemischer A.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.drbosse.de">
     <meta property="og:locale" content="de_DE">
@@ -48,6 +48,10 @@
             position: relative;
             z-index: 1;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+             /* NEU: Für Göttingen ganz unten */
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
         }
 
         @keyframes fadeInUp {
@@ -79,17 +83,38 @@
             font-weight: 300;
             white-space: nowrap;
         }
+        
+        
+.hero-line {
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    color: var(--text-secondary);
+    margin: 0 0;  /* GEÄNDERT: Kein Abstand! */
+    line-height: 1.3;  /* GEÄNDERT: Engerer Zeilenabstand */
+    font-weight: 300;
+}
 
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            line-height: 1.8;
-        }
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-secondary);
+    margin-top: 2.5rem; /* Abstand nach oben */
+    margin-bottom: 0; /* GEÄNDERT: Kein Abstand nach unten */
+    opacity: 0.8;
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+.hero-location {
+    font-size: 0.85rem;
+    color: var(--petrol);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: auto;  /* GEÄNDERT: von 3rem auf auto Push to bottom */
+    padding-bottom: 2rem;  /* NEU: Abstand zum unteren Rand GEÄNDERT: padding statt margin*/
+    opacity: 0.6;
+    font-weight: 500;
+}
+
+        
 
         /* Section Styling */
 
@@ -383,14 +408,19 @@
 <body>
     <!-- Navigation -->
 <?php include 'includes/nav.php'; ?>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-           
-            <h1>Raum für Veränderung</h1>
-            <p>Integrative Schmerztherapie<br> Achtsamkeit <br>Begleitung und Coaching <br></p>
-        </div>
-    </section>
+   <!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Raum für Veränderung</h1>
+        
+        <p class="hero-line">Integrative Schmerztherapie</p>
+        <p class="hero-line">Hypnosystemik und Achtsamkeit</p>
+        
+        <p class="hero-subtitle">Begleitung und Coaching</p>
+        
+        <p class="hero-location">Göttingen</p>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="ueber-mich">
