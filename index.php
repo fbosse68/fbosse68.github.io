@@ -78,6 +78,7 @@
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             line-height: 1.15;
+            margin-top: 8rem;
             margin-bottom: 2rem;
             color: var(--text-primary);
             font-weight: 300;
