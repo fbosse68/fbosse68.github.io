@@ -26,5 +26,8 @@ if (!file_exists($pfad)) {
 
 header("Content-Type: application/octet-stream");
 header("Content-Disposition: attachment; filename=" . basename($datei));
+header("Content-Length: " . filesize($pfad));
+header("Cache-Control: no-cache");
+ob_end_clean();
 readfile($pfad);
 exit;

@@ -315,10 +315,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-container {
-                flex-wrap: wrap;
-                gap: 0.5rem;
-            }
 
             .logo {
                 font-size: 0.85rem;
@@ -349,6 +345,12 @@
         @media (max-width: 480px) {
             .logo {
                 font-size: 0.75rem;
+            }
+        }
+        .mbsr-logo-fixed { width: 150px; }
+        @media (max-width: 768px) {
+            .mbsr-logo-fixed {
+                display: none;
             }
         }
     </style>
@@ -569,7 +571,7 @@
                 </div>
                  <div class="detail-row">
                     <span class="detail-label">Orientierungsabend</span>
-                    <span class="detail-value">Mittwoch, 25. Februar 2026</span>
+                    <span class="detail-value">Mittwoch, 25. Februar 2026, 19:30</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Kursgebühr</span>
@@ -762,26 +764,20 @@
             }
         }
 
-        async function downloadDatei(datei, ordner) {
+        function downloadDatei(datei, ordner) {
             const pw = sessionStorage.getItem('kursPw');
             if (!pw) return;
-            const formData = new FormData();
-            formData.append('passwort', pw);
-            const response = await fetch(
-                'download.php?datei=' + datei + '&ordner=' + ordner,
-                { method: 'POST', body: formData }
-            );
-            if (response.ok) {
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = datei;
-                a.click();
-                window.URL.revokeObjectURL(url);
-            } else {
-                alert('Fehler beim Download.');
-            }
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'download.php?datei=' + encodeURIComponent(datei) + '&ordner=' + encodeURIComponent(ordner);
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'passwort';
+            input.value = pw;
+            form.appendChild(input);
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
         }
 
         function pwAbbrechen() {
@@ -832,5 +828,11 @@
 
     <!-- Footer -->
 <?php include 'includes/footer.php'; ?>
+    <!-- MBSR-Verband Logo fixed -->
+    <a href="https://www.mbsr-verband.de" target="_blank"
+       style="position:fixed; bottom:1.5rem; left:1.5rem; z-index:1000; opacity:0.85; transition:opacity 0.2s;"
+       onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.85">
+        <img src="bilder/Logo_MBSR.png" alt="MBSR MBCT Verband" class="mbsr-logo-fixed" style="height:auto;">
+    </a>
 </body>
 </html>
